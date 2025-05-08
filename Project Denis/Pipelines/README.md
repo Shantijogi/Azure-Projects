@@ -2,7 +2,7 @@
 
 This repository demonstrates a complete Azure Data Engineering pipeline using the **Medallion Architecture** pattern: **Bronze → Silver → Gold**. Data is ingested from multiple sources, transformed, and prepared for reporting using Power BI.
 
-![Medallion Architecture](Medallion_Architectur.png)
+![Medallion Architecture](Medallion_Architecture.png)
 
 
 ## 🥉 Bronze Layer - Raw Data Ingestion
