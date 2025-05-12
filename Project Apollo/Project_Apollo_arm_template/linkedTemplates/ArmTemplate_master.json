@@ -1,0 +1,111 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "apolloadf09"
+        },
+        "blobtoadf_LS_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'blobtoadf_LS'"
+        },
+        "AzureDataLakeStorage1_accountKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+        },
+        "AdftoAsql_LS_password": {
+            "type": "secureString",
+            "metadata": "Secure string for 'password' of 'AdftoAsql_LS'"
+        },
+        "AzureDataLakeStorage1_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://adlsapollo.dfs.core.windows.net/"
+        },
+        "AdftoAsql_LS_properties_typeProperties_server": {
+            "type": "string",
+            "defaultValue": "apolloserver.database.windows.net"
+        },
+        "AdftoAsql_LS_properties_typeProperties_database": {
+            "type": "string",
+            "defaultValue": "apollodb"
+        },
+        "AdftoAsql_LS_properties_typeProperties_userName": {
+            "type": "string",
+            "defaultValue": "apolloadmin"
+        },
+        "containerUri": {
+            "type": "string",
+            "metadata": "URI to storage account containing linked ARM templates"
+        },
+        "containerSasToken": {
+            "type": "string",
+            "metadata": "Sas token to storage account containing linked ARM templates"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "apolloadf09_ArmTemplate_0",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2024-03-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "blobtoadf_LS_connectionString": {
+                        "value": "[parameters('blobtoadf_LS_connectionString')]"
+                    },
+                    "AzureDataLakeStorage1_accountKey": {
+                        "value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+                    },
+                    "AdftoAsql_LS_password": {
+                        "value": "[parameters('AdftoAsql_LS_password')]"
+                    },
+                    "AzureDataLakeStorage1_properties_typeProperties_url": {
+                        "value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+                    },
+                    "AdftoAsql_LS_properties_typeProperties_server": {
+                        "value": "[parameters('AdftoAsql_LS_properties_typeProperties_server')]"
+                    },
+                    "AdftoAsql_LS_properties_typeProperties_database": {
+                        "value": "[parameters('AdftoAsql_LS_properties_typeProperties_database')]"
+                    },
+                    "AdftoAsql_LS_properties_typeProperties_userName": {
+                        "value": "[parameters('AdftoAsql_LS_properties_typeProperties_userName')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "apolloadf09_ArmTemplate_1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2024-03-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'apolloadf09_ArmTemplate_0')]"
+            ]
+        }
+    ]
+}

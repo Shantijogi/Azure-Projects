@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "apolloadf09"
+        },
+        "blobtoadf_LS_connectionString": {
+            "value": ""
+        },
+        "AzureDataLakeStorage1_accountKey": {
+            "value": ""
+        },
+        "AdftoAsql_LS_password": {
+            "value": ""
+        },
+        "AzureDataLakeStorage1_properties_typeProperties_url": {
+            "value": "https://adlsapollo.dfs.core.windows.net/"
+        },
+        "AdftoAsql_LS_properties_typeProperties_server": {
+            "value": "apolloserver.database.windows.net"
+        },
+        "AdftoAsql_LS_properties_typeProperties_database": {
+            "value": "apollodb"
+        },
+        "AdftoAsql_LS_properties_typeProperties_userName": {
+            "value": "apolloadmin"
+        }
+    }
+}
