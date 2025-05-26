@@ -1,0 +1,13 @@
+CREATE SCHEMA gold;
+
+
+
+
+
+
+
+
+
+
+
+
