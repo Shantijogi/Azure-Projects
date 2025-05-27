@@ -8,7 +8,7 @@ This project demonstrates a complete data pipeline based on the **Medallion Arch
 
 ## 🔁 Architecture Workflow
 
-Git → ADF → ADLS (Bronze) → Databricks → ADLS (Silver - Parquet) → Synapse SQL Pool → ADLS (Gold - Tables)
+![Project Architecture](ProjectAdventureWorksArchitecture.png)
 
 ---
 
